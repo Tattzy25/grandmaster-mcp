@@ -35,24 +35,6 @@ Shopping assistants, Product discovery, Storefront search, Cart management, Chec
 3. For a particular store, provide its `shop_domain` and a UCP agent profile URL, then ask: "Search this store for a blue jacket." This uses `search_catalog`. If you do not have your own profile, use `https://ucp-agent-profile.facetimefy.com/ucp/agent-profiles/2026-08-25/valid-with-capabilities.json` for `_meta["ucp-agent"].profile`.
 4. Review cart and checkout results before changing them. Use `complete_checkout` only after the buyer authorizes the purchase and payment.
 
-### Available tools
-- `global_search_catalog` — Search products across Shopify merchants.
-- `global_lookup_catalog` — Resolve global product or variant identifiers.
-- `global_get_product` — Retrieve global product details and variants.
-- `search_catalog` — Search a selected merchant's products.
-- `lookup_catalog` — Resolve products or variants from a selected merchant.
-- `get_product` — Retrieve a selected merchant's product details.
-- `create_cart` — Create a merchant cart with line items.
-- `get_cart` — Retrieve an existing cart.
-- `update_cart` — Replace an existing cart's state.
-- `cancel_cart` — Cancel a cart.
-- `create_checkout` — Start a checkout, optionally using a cart.
-- `get_checkout` — Retrieve checkout state.
-- `update_checkout` — Replace checkout state.
-- `complete_checkout` — Submit an authorized checkout for completion.
-- `cancel_checkout` — Cancel a checkout.
-- `search_shop_policies_and_faqs` — Search a store's policies and FAQs.
-
 ## Tags
 shopify, mcp, ucp, ecommerce, commerce, shopping, products, catalog, cart, checkout, cloudflare-workers
 
