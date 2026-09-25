@@ -11,7 +11,7 @@ The tools are grouped into global catalog (3), storefront catalog (3), cart (4),
 ## Setup Requirements
 - Remote MCP endpoint: Connect your MCP client to `https://grand-master-mcp.anigok.com/mcp`.
 - Merchant-specific catalog, cart, and checkout calls: Supply `shop_domain` with the domain of the merchant you want to use. The server forwards the call to `https://<shop_domain>/api/ucp/mcp`. The domain is not limited to `myshopify.com`; it must be a domain that actually serves that merchant's UCP MCP endpoint. Global catalog tools do not use `shop_domain`.
-- UCP agent profile: Merchant-specific catalog, cart, and checkout calls require `_meta["ucp-agent"].profile`, a URL for the calling agent's UCP profile. The global catalog tools accept this metadata but do not require it. The caller supplies it as a tool argument, not as a server environment variable.
+- UCP agent profile: Merchant-specific catalog, cart, and checkout calls require `_meta["ucp-agent"].profile`, a URL for the calling agent's UCP profile. You can use your own profile or this project-provided profile: `https://ucp-agent-profile.facetimefy.com/ucp/agent-profiles/2026-08-25/valid-with-capabilities.json`. The global catalog tools accept this metadata but do not require it. Supply the URL in the tool arguments; it is not a server environment variable.
 - Store policies and FAQs: Supply `store_domain` to `search_shop_policies_and_faqs`. The server forwards the call to `https://<store_domain>/api/mcp`.
 - Idempotency: `cancel_cart`, `complete_checkout`, and `cancel_checkout` require a UUID in `_meta["idempotency-key"]`.
 - Server-side configuration: The provided server code does not read environment variables or require users to install an npm or PyPI package.
@@ -32,7 +32,7 @@ Shopping assistants, Product discovery, Storefront search, Cart management, Chec
 ## Getting Started
 1. Add `https://grand-master-mcp.anigok.com/mcp` as a remote MCP server in your client.
 2. For global discovery, ask: "Search the global Shopify catalog for trail running shoes." This uses `global_search_catalog` and does not require a merchant domain.
-3. For a particular store, provide its `shop_domain` and your agent's UCP profile URL, then ask: "Search this store for a blue jacket." This uses `search_catalog`.
+3. For a particular store, provide its `shop_domain` and a UCP agent profile URL, then ask: "Search this store for a blue jacket." This uses `search_catalog`. If you do not have your own profile, use `https://ucp-agent-profile.facetimefy.com/ucp/agent-profiles/2026-08-25/valid-with-capabilities.json` for `_meta["ucp-agent"].profile`.
 4. Review cart and checkout results before changing them. Use `complete_checkout` only after the buyer authorizes the purchase and payment.
 
 ### Available tools
